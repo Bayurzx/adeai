@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// 👇🏼 interfaces, contracts, and utilities that are all related to NFTs
+// interfaces, contracts, and utilities that are all related to NFTs
 // This is a one-third of ERC 721, the rest are IERC721Metadata, and IERC721Enumerable
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-// 👇🏼 Helps check if a third party addresses is not making an incorrect call
+// Helps check if a third party addresses is not making an incorrect call
 import "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol";
-// 👇🏼 A modifier to prevent reentrancy in functions
+// A modifier to prevent reentrancy in functions
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-// 👇🏼 a simple way to incremented or decremented; Also helps prevent overflow
+// a simple way to incremented or decremented; Also helps prevent overflow
 import "@openzeppelin/contracts/utils/Counters.sol";
-// 👇🏼 standardized way to retrieve royalty payment information for NFTs
+// standardized way to retrieve royalty payment information for NFTs
 import "@openzeppelin/contracts/interfaces/IERC2981.sol";
 
 contract Marketplace is ReentrancyGuard {
