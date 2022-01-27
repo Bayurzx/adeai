@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 // A simple way to incremented or decremented; Also helps prevent overflow
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -48,10 +48,11 @@ contract NFT is
         onlyCreator
     {
         tokenId_.increment();
-        uint256 tokenId = tokenId_.current();
-        _mint(msg.sender, tokenId);
-        _setTokenURI(tokenId, metaHash);
-        royaltyId[tokenId] = royalty_;
+        uint256 newtokenId = tokenId_.current();
+        _mint(msg.sender, newtokenId);
+        // set up token URI, it's where our image is hosted (id, uri)
+        _setTokenURI(newtokenId, metaHash);
+        royaltyId[newtokenId] = royalty_;
     }
 
     function getTokenRoyalty(uint256 _tokenId) external view returns (uint256) {

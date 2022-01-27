@@ -1,21 +1,38 @@
 require("@nomiclabs/hardhat-waffle");
+require('dotenv').config();
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
+const projectId = process.env.REACT_APP_PROJECT_ID;
 
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
+process.env.REACT_APP_AURORA_PRIVATE_KEY ? console.log("REACT_APP_PRIVATE_KEY: True") : console.log("REACT_APP_PRIVATE_KEY: False");;
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
 module.exports = {
   solidity: "0.8.4",
+
+  networks: {
+    testnet_aurora: {
+      url: 'https://testnet.aurora.dev',
+      accounts: [`0x${process.env.REACT_APP_AURORA_PRIVATE_KEY}`]
+    },
+    develop_aurora: {
+      url: 'https://develop.rpc.testnet.aurora.dev:8545',
+      accounts: [`0x${process.env.REACT_APP_AURORA_PRIVATE_KEY}`]
+    },
+    ropsten: {
+      url: 'https://rpc.testnet.aurora.dev:8545',
+      accounts: [`0x${process.env.REACT_APP_AURORA_PRIVATE_KEY}`]
+    }
+  },
+  
+  // optimizer helps with the Warning: Contract code size exceeds 24576 bytes (a limit introduced in Spurious Dragon)
+  solidity: {
+    version: "0.8.4",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  },
+  
 };

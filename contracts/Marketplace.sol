@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 // interfaces, contracts, and utilities that are all related to NFTs
 // This is a one-third of ERC 721, the rest are IERC721Metadata, and IERC721Enumerable
@@ -12,6 +12,8 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 // standardized way to retrieve royalty payment information for NFTs
 import "@openzeppelin/contracts/interfaces/IERC2981.sol";
+// To print logging messages and contract variables calling console.log()
+import "hardhat/console.sol";
 
 contract Marketplace is ReentrancyGuard {
     using Counters for Counters.Counter;

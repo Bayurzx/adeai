@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
-
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.4;
 
 // A simple way to incremented or decremented; Also helps prevent overflow
 import "@openzeppelin/contracts/utils/Counters.sol";
@@ -9,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./NFT.sol";
 
 contract Collection is Ownable {
-    uint256 price;
+    uint256 price; // market fee set by admin
 
     constructor(uint256 price_) {
         price = price_;
