@@ -1,7 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 
-const projectId = process.env.REACT_APP_PROJECT_ID;
 
 process.env.REACT_APP_AURORA_PRIVATE_KEY ? console.log("REACT_APP_PRIVATE_KEY: True") : console.log("REACT_APP_PRIVATE_KEY: False");;
 

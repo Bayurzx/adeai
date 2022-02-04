@@ -51,6 +51,16 @@ contract Marketplace is ReentrancyGuard {
     mapping(uint256 => MarketItem) private idToMarketItem;
     mapping(uint256 => AuctionInfo) private auctionData;
 
+    // writing this rather rhan a function to check every time
+    // All sellers
+    address[] public allSellers;
+
+    // All creators
+    address[] public allCreators;
+
+    // All creators earnings
+    uint public totalEarnings;
+
     // define events
     event MarketItemCreatedEvent(
         uint256 indexed itemId,
@@ -155,6 +165,8 @@ contract Marketplace is ReentrancyGuard {
             tokenId
         );
 
+        allCreators.push(msg.sender);
+
         emit MarketItemCreatedEvent(
             itemId,
             nftContractAddress,
@@ -239,6 +251,8 @@ contract Marketplace is ReentrancyGuard {
             (block.timestamp + auctionTime * 1 hours)
         );
 
+        allCreators.push(msg.sender);
+
         emit MarketAuctionItemCreatedEvent(
             itemId,
             nftContractAddress,
@@ -306,6 +320,9 @@ contract Marketplace is ReentrancyGuard {
         currentItem.sold = true;
         _itemsSold.increment();
 
+        allSellers.push(currentItem.seller);
+        totalEarnings += msg.value;
+
         emit MarketItemSoldEvent(
             itemId,
             nftContractAddress,
@@ -338,6 +355,10 @@ contract Marketplace is ReentrancyGuard {
             msg.sender,
             currentItem.tokenId
         );
+        
+        allSellers.push(currentItem.seller);
+        totalEarnings += msg.value;
+        
         currentItem.owner = payable(msg.sender);
         currentItem.sold = true;
         _itemsSold.increment();
