@@ -1,0 +1,12 @@
+/*
+ * Smart Image Tooltip v1.4
+ * http://www.smartplugins.info/plugin/javascript/smart-image-popups/
+ *
+ * Copyright 2008 - 2014 Milan Petrovic (email: milan@gdragon.info)
+ *
+ * https://www.dev4press.com
+ * http://www.smartplugins.info
+ *
+ */
+
+.sit-preview-block{position:absolute;display:none;z-index:100000;max-width: 520px!important}.sit-preview-block img{margin:0;border:0;max-width:100%;height:auto;display:block}.sit-preview-preloader{background:#333333 url(../img/images/preload.animation.gif) center center no-repeat;display:block}.sit-preview-shadow{-webkit-box-shadow: 0px 9px 54.87px 4.13px rgba(67, 7, 122, 0.07);box-shadow:0px 9px 54.87px 4.13px rgba(67, 7, 122, 0.07)}.sit-theme-gemas{background:#333333;padding:10px;border-radius:0px}.sit-theme-gemas h3{font-weight:600;margin:15px 0 5px;font-size:18px;color: #fff;line-height:26px}.sit-gemas-info{float:left}.sit-gemas-price{float:right;font-size:28px;font-weight:600;color: #fff;}.sit-gemas-price sup{vertical-align:-2px;font-size:16px;color: #fff;}.sit-gemas-author{color:#aaa;font-size:11px;margin-bottom:15px;display:block}.sit-gemas-category{color:#ededed;font-size:13px;display:block;margin-bottom:5px}
