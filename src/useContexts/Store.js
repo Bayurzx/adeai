@@ -2,7 +2,7 @@ import React, { useState, createContext } from "react";
 import { ethers, utils } from 'ethers';
 import Web3Modal from 'web3modal'
 import { notification } from 'antd';
-import 'antd/dist/antd.css'; // Add this to where you export the function
+// import 'antd/dist/antd.min.css'; // Add this to where you export the function
 
 import { marketplaceAddress, collectionAddress } from "../config.js"
 import CollectionAbi from '../artifacts/contracts/Collection.sol/Collection.json';
@@ -18,7 +18,10 @@ export const StoreFunctions = (props) => {
     const fx = {};
 
     fx.setup = async () => {
-        await ethereum.request({ method: 'eth_requestAccounts' }).then(res => {
+        if (!window.ethereum) {
+            alert("Get a web3 extension like metamask\n Click the walkthrough link")
+        }
+        await window.ethereum?.request({ method: 'eth_requestAccounts' }).then(res => {
             if (window.ethereum?.chainId === "0x4e454153") {
                 setAccounts(res[0])
             } else if (window.ethereum?.chainId !== "0x4e454153") {
@@ -26,18 +29,18 @@ export const StoreFunctions = (props) => {
                 if (answer.toLowerCase() === "yes") {
                     
                     try {
-                        await ethereum.request({
+                        window.ethereum?.request({
                             method: 'wallet_switchEthereumChain',
                             params: [{ chainId: '0x4e454153' }],
-                        });
-                        await ethereum.request({ method: 'eth_requestAccounts' }).then(res => setAccounts(res[0]))
+                        }).then(() => window.ethereum?.request({ method: 'eth_requestAccounts' }).then(res => setAccounts(res[0])))
+                         
                     } catch (switchError) {
                         // This error code indicates that the chain has not been added to MetaMask.
                         console.log("Could not switch to the Aurora Testnet Network \nAttempting to add it...");
 
                         if (switchError.code === 4902) {
                             try {
-                                await ethereum.request({
+                                window.ethereum?.request({
                                     method: 'wallet_addEthereumChain',
                                     params: [
                                         {
@@ -52,8 +55,7 @@ export const StoreFunctions = (props) => {
                                             rpcUrls: ["https://testnet.aurora.dev"],
                                         },
                                     ],
-                                });
-                                await ethereum.request({ method: 'eth_requestAccounts' }).then(res => setAccounts(res[0]))
+                                }).then(() => window.ethereum?.request({ method: 'eth_requestAccounts' }).then(res => setAccounts(res[0])))
 
                             } catch (addError) {
                                 // handle "add" error
@@ -64,7 +66,7 @@ export const StoreFunctions = (props) => {
 
                 }
             } else {
-                window.alert("Get web3 extension")
+                window.alert("Get a web3 extension like metamask")
             }
         })
 
@@ -166,7 +168,7 @@ export const StoreFunctions = (props) => {
         return result;
     }
     
-    fx.getMoreCollections = async () => {
+    fx.getMoreCollections = async (startIndex, endIndex) => {
         if (!account) fx.setup();
 
         const provider = new ethers.providers.JsonRpcProvider();

@@ -1,10 +1,46 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AccountConn from "../elements/AccountConn";
+import AccountDisConn from "../elements/AccountDisConn";
 
 import Store from '../useContexts/Store'
 
 const Navbar = () => {
     const { account, setup } = useContext(Store);
+
+    // fixes the jQuery issue for non-responsiveness
+    useEffect(() => {
+        let $ = window.$;
+        $('.main-menu-icon').click(function () {
+            $('.menu').toggleClass('menu-open');
+            $('.main-menu-icon').toggleClass('icon-cross');
+            $('.menu ul').slideToggle();
+            $('ul ul').css('display', 'none');
+        });
+        // Submenu
+        $('.menu ul li.has-children').click(function () {
+            $(this).find('ul').slideToggle();
+            $(this).siblings().find('ul').slideUp();
+        });
+
+        $(window).resize(function () {
+            if ($(window).width() > 1199) {
+                $('ul').removeAttr('style');
+            }
+        });;
+
+
+        // Toggle Image Profile
+        $(".header-transparent.sticky .action-nav").each(function () {
+            $(".img-otr", this).on("click", function (e) {
+                e.preventDefault();
+                $(".profile-pop-otr").slideToggle();
+            });
+        });
+
+
+    }, []);
+
 
     return (
         <>
@@ -66,48 +102,9 @@ const Navbar = () => {
                                     </ul> {/* end ul  */}
                                 </nav> {/* end nav  */}
                             </div>{/* end menu  */}
-                            <div className="action-nav">
 
-                                <div className="profile-nav-main">
-                                    <div className="profile-nav">
-                                        <div className="img-otr">
-                                            <img className="nav-prof-img" src="img/avatar/1.jpg" alt="Avatar" />
-                                            <i className="bx bxs-check-circle" />
-                                        </div>
-                                    </div>{/* end profile-nav  */}
-                                    <div className="profile-pop-otr">
-                                        <div className="balance-otr">
-                                            <div className="balance">
-                                                <p className="text heading-S">Balance</p>
-                                                <p className="price heading-L">30.656 ETH</p>
-                                            </div>
-                                            <div className="img-etherem">
-                                                <img className="etherem" src="img/avatar/ethereum.png" alt="img" />
-                                            </div>
-                                        </div>{/* end balance  */}
-                                        <div className="copy-icon-otr">
-                                            <span id="wallet" className="profile_wallet text heading-SB">DdzFFzCqrhshMSxb9oW1HPa7K7f865Kk4LqnrME</span>
-                                            <button id="btn_copy" title="Copy Text">
-                                                <i className="bx bx-copy-alt" />
-                                            </button>
-                                        </div>{/* end copy link  */}
-                                        <ul className="link-profile-ul">
-                                            <li className="link-profile-li">
-                                                <Link to className="link-profile-a heading-SB">My Item</Link>
-                                            </li>
-                                            <li className="link-profile-li">
-                                                <Link to className="link-profile-a heading-SB">Edit Profile</Link>
-                                            </li>
-                                            <li className="link-profile-li">
-                                                <Link to className="link-profile-a heading-SB">Upload File</Link>
-                                            </li>
-                                            <li className="link-profile-li">
-                                                <Link to className="link-profile-a heading-SB">Logout</Link>
-                                            </li>
-                                        </ul>{/* end ul  */}
-                                    </div>{/* end profile pop  */}
-                                </div>{/* end profile nav  */}
-                            </div>{/* end action nav  */}
+                            {account ? <AccountConn /> : <AccountDisConn />}
+
                             {/* Responsive Menu */}
                             <div className="mobile-menu mobile-menu-preview" />
                         </div>{/* end main menu  */}
@@ -120,7 +117,10 @@ const Navbar = () => {
                 </div>{/* end main menu area  */}
             </header> {/* end header  */}
 
+
         </>
     )
 
 }
+
+export default Navbar;

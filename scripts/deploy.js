@@ -58,7 +58,7 @@ async function main() {
 export const collectionAddress = "${collection.address}";` // make sure to remove indentation
 
   let data = JSON.stringify(config)
-  fs.writeFileSync('config.js', JSON.parse(data))
+  fs.writeFileSync('./src/config.js', JSON.parse(data))
   
 }
 
