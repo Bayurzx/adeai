@@ -4,7 +4,9 @@ const SelectedNftContext = createContext();
 
 export const SelectedNFT = (props) => {
     const [selectedNFT, setSelectedNFT] = useState();
-    return (<SelectedNftContext.Provider value={{ selectedNFT, setSelectedNFT }}>
+    const [loading, setLoading] = useState(false);
+
+    return (<SelectedNftContext.Provider value={{ selectedNFT, setSelectedNFT, loading, setLoading }}>
         {props.children}
     </SelectedNftContext.Provider>);
 }

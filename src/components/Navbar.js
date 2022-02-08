@@ -8,7 +8,7 @@ import Store from '../useContexts/Store'
 const Navbar = () => {
     const { account, setup } = useContext(Store);
 
-    // fixes the jQuery issue for non-responsiveness
+    // quick fixes: the jQuery issue for non-responsiveness
     useEffect(() => {
         let $ = window.$;
         $('.main-menu-icon').click(function () {
@@ -103,7 +103,7 @@ const Navbar = () => {
                                 </nav> {/* end nav  */}
                             </div>{/* end menu  */}
 
-                            {account ? <AccountConn /> : <AccountDisConn />}
+                            <div className="ml-4">{account ? <AccountConn /> : <AccountDisConn />}</div>
 
                             {/* Responsive Menu */}
                             <div className="mobile-menu mobile-menu-preview" />

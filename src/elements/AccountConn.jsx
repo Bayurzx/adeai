@@ -7,7 +7,7 @@ function AccountConn() {
     const { account } = useContext(Store);
     return (
         <>
-            <div className="action-nav ps-4">
+            <div className="action-nav">
                 <Button variant="success">
                     <span id="wallet" className="profile_wallet text heading-SB"><strong>🔑 {account}</strong></span>
                 </Button>
