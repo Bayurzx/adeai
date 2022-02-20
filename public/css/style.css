@@ -298,6 +298,9 @@
 	.pb-150{
 		padding-bottom:150px;
 	}
+	.pb-170{
+		padding-bottom:170px;
+	}
 	.pb-20{
 		padding-bottom:20px;
 	}
@@ -1278,6 +1281,22 @@ a.single_category:hover {
 	background:var(--gradient-color);
 	color:var(--white-color);
 }
+a.single_category2 {
+    text-align: center;
+    /* background: var(--white-color); */
+    padding: 25px 5px;
+    border-radius: 4px;
+    /* color: var(--spandark-color); */
+    display: block;
+    transition: all .4s ease;
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
+a.single_category2:hover {
+	transform: translateY(-8px);
+	/* background:var(--gradient-color); */
+	/* color:var(--white-color); */
+}
 span.category_icon i {
     font-size: 36px;
 	width:100%;
@@ -1581,8 +1600,37 @@ a.author_link i {
     margin-right: .5rem;
     color: var(--spandark-color) !important;
 }
+.product_title_link a.product-title h5.product_title_intro {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: .2rem;
+	line-height: 2.5rem;	
+    color: var(--heading-color);
+    font-weight: 500;
+	padding-right: 0.3rem;
+}
 .product_title_link a.product-title h6.product_title_intro {
     padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: .2rem;
+	line-height: 2rem;	
+    color: orange;
+    font-weight: 300;
+    font-style:italic;
+	padding-right: 0.3rem;
+}
+.product_title_link a.product-title p.product_title_intro {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: .2rem;
+	line-height: 1.5rem;	
+    color: var(--heading-color);
+    font-weight: 200;
+	padding-right: 0.3rem;
+}
+.product_title_link div.product-title h6.product_title_intro {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     padding-top: .2rem;
 	line-height: 2rem;	
     color: var(--heading-color);
@@ -4630,7 +4678,23 @@ a.arrow-wallet i {
 }
 
 
+/* my added css starts here */
+/* buttonloader */
+.buttonloader {
+  background-color: #ffffff; /* White */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.buttonloader:disabled {
+  opacity: 0.5;
+}
 
+/* my added css starts here */
 
 
 

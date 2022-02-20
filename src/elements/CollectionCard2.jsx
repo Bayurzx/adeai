@@ -15,11 +15,13 @@ function CollectionCard({ metaData }) {
                 {metaData?.file ? (
                   <img
                     src={URL.createObjectURL(metaData.file)}
+                    alt="NFT"
                     className="responsive-fluid"
                   ></img>
                 ) : (
                   <img
-                    src="img/items/8.jpg"
+                    src="/img/items/8.jpg"
+                    alt="NFT"
                     className="responsive-fluid"
                   ></img>
                 )}

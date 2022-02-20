@@ -5,20 +5,21 @@ import { notification, Form, Upload } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 
 import Store from '../useContexts/Store'
-import SelectedNftContext from '../useContexts/SelectedNft'
+import SelectStateContext from '../useContexts/SelectState'
 import { pinFileToIPFS, pinJSONToIPFS, unPin } from "../helpers";
 import CollectionCard from "../elements/CollectionCard2";
 import Spinner from "../elements/Spinner";
+import Breadcrumb from "../elements/Breadcrumb";
 
 function NewCollection() {
     const [price, setPrice] = useState();
     const [metaData, setMetaData] = useState({
-        name: "MyNFT Name",
-        symbol: "SYM",
-        title: "myNFT@gmail.com",
-        caption: "The greatest!",
-        description: "Are you religious? Cause you\’re the answer to all my prayers.",
-        image: "img/items/8.jpg",
+        name: "",
+        symbol: "",
+        title: "",
+        caption: "",
+        description: "",
+        image: "",
         file: "",
     });
 
@@ -40,7 +41,7 @@ function NewCollection() {
     let navigate = useNavigate();
 
     const { getCollectionPrice, createCollection } = useContext(Store);
-    const { loading, setLoading } = useContext(SelectedNftContext);
+    const { loading, setLoading } = useContext(SelectStateContext);
 
     const handleInputChange = (field, value) => {
         // console.log(field, value);
@@ -70,7 +71,18 @@ function NewCollection() {
 
         setLoading(true)
 
-        const { data: { IpfsHash: IpfsHash } } = await pinFileToIPFS(metaData.file) // rename not necessary
+        if (!metaData?.file) {
+            notification['error']({
+                message: "File Upload Failed!",
+                description: "You need to upload an image!",
+                duration: 30,
+            });
+            setLoading(false)
+
+            throw new Error("You need to upload an image")
+        }
+
+        const { data: { IpfsHash } } = await pinFileToIPFS(metaData.file) 
 
         notification['info']({
             message: "Upload to IPFS",
@@ -103,7 +115,7 @@ function NewCollection() {
                     duration: 8,
                 });
 
-                navigate('/userCollection') // this should be nft creation page
+                navigate('/usercollection') // this should be nft creation page
             })
             .catch(error => {
                 setLoading(false)
@@ -125,6 +137,7 @@ function NewCollection() {
     return (
         <>
             {loading && <Spinner />}
+            <Breadcrumb title="Create a Collection" description="Home to your NFTs!" />
             <section className="dark-bg-all">{/* start dark bg */}
                 <div id="contact_form_page" className="contact-form-area pt-100">{/* start contact area */}
                     <div className="container pb-20">{/* start container */}
@@ -134,7 +147,7 @@ function NewCollection() {
                             <div className="col-md-6">{/* start col */}
                                 <div className="contact-left-area">
                                     <div className="form-title pt-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-                                        <h2 className="section_heading">Send us Message</h2>
+                                        <h2 className="section_heading">Create Collection</h2>
                                     </div>
                                     <div className="row mt-5">
                                         <div className="col-md-12">

@@ -41,6 +41,11 @@ const Navbar = () => {
 
     }, []);
 
+    useEffect(() => {
+        setup();
+    }, []);
+    
+
 
     return (
         <>
@@ -54,10 +59,10 @@ const Navbar = () => {
                         <div className="main-menu d-flex align-items-center">
                             <div className="logo"> {/* start logo  */}
                                 <Link to="/" className="navbar-brand">
-                                    <img src="img/logo.png" alt="logo" />
+                                    <img src="/img/logo.png" alt="logo" />
                                 </Link>
                                 <Link to="/" className="navbar-icon">
-                                    <img src="img/favicon.png" alt="logo" />
+                                    <img src="/img/favicon.png" alt="logo" />
                                 </Link>
                             </div> {/* End logo  */}
                             <div className="input-main"> {/* start search bar  */}
@@ -70,22 +75,21 @@ const Navbar = () => {
                                 <nav className="navigation" id="mobile-menu">
                                     <ul className="menu-list list-style-none mb-0"> {/* start ul  */}
                                         <li><Link to="/">Home</Link></li>
-                                        <li className="has-children"><Link to="#">Explore</Link>
+                                        <li className="has-children"><Link to="/allcollection">Collection</Link>
                                             <ul className="sub-menu">
-                                                <li><Link to="explores.html">Explore One</Link></li>
-                                                <li><Link to="live.html"> Live Auction</Link></li>
-                                                <li><Link to="collection.html"> Collection</Link></li>
-                                                <li><Link to="item-details.html">Item Details</Link></li>
+                                                <li><Link to="/allcollection">All Collection</Link></li>
+                                                <li><Link to="/usercollection"> User Collection</Link></li>
+                                                <li><Link to="/newcollection"> New Collection</Link></li>
                                             </ul>
                                         </li>
-                                        <li className="has-children"><Link to="#">Community</Link>
+                                        <li className="has-children"><Link to="/allnfts">NFTs</Link>
                                             <ul className="sub-menu">
-                                                <li><Link to="blog.html">News &amp; Press</Link></li>
-                                                <li><Link to="blog-details.html">Single Blog</Link></li>
-                                                <li><Link to="faqs.html">Help Center</Link></li>
+                                                <li><Link to="/allnfts">All NFTs</Link></li>
+                                                <li><Link to="/ownednfts">Owned NFTs</Link></li>
+                                                <li><Link to="/listednfts">Listed NFTs</Link></li>
                                             </ul>
                                         </li>
-                                        <li className="has-children"><Link to="#">Pages</Link>
+                                        {/* <li className="has-children"><Link to="#">Pages</Link>
                                             <ul className="sub-menu">
                                                 <li><Link to="signin.html">My Account</Link></li>
                                                 <li><Link to="signup.html">Sign Up</Link></li>
@@ -97,8 +101,10 @@ const Navbar = () => {
                                                 <li><Link to="privacy.html">Privacy Policy</Link></li>
                                                 <li><Link to="wallet.html">Connect Wallet</Link></li>
                                             </ul>
-                                        </li>
-                                        <li><Link to="activity.html">Activity</Link></li>
+                                        </li> */}
+
+                                        <li><a href="https://adeai-walkthrough.netlify.app/" target="_blank">Walkthrough</a></li>
+
                                     </ul> {/* end ul  */}
                                 </nav> {/* end nav  */}
                             </div>{/* end menu  */}

@@ -2,7 +2,6 @@ import React, { useState, createContext } from "react";
 import { ethers, utils } from 'ethers';
 import Web3Modal from 'web3modal'
 import { notification } from 'antd';
-// import 'antd/dist/antd.min.css'; // Add this to where you export the function
 
 import { marketplaceAddress, collectionAddress } from "../config.js"
 import CollectionAbis from '../artifacts/contracts/Collection.sol/Collection.json';
@@ -36,6 +35,32 @@ export const StoreFunctions = (props) => {
                             method: 'wallet_switchEthereumChain',
                             params: [{ chainId: '0x4e454153' }],
                         }).then(() => window.ethereum?.request({ method: 'eth_requestAccounts' }).then(res => setAccounts(res[0])))
+                        .catch((switchError) => {
+                            if (switchError.code === 4902) {
+                                try {
+                                    window.ethereum?.request({
+                                        method: 'wallet_addEthereumChain',
+                                        params: [
+                                            {
+                                                chainId: '0x4e454153',
+                                                blockExplorerUrls: ["https://explorer.testnet.aurora.dev"],
+                                                chainName: "Aurora",
+                                                nativeCurrency: {
+                                                    name: "Aurora ETH",
+                                                    symbol: "ETH",
+                                                    decimals: 18,
+                                                },
+                                                rpcUrls: ["https://testnet.aurora.dev"],
+                                            },
+                                        ],
+                                    }).then(() => window.ethereum?.request({ method: 'eth_requestAccounts' }).then(res => setAccounts(res[0])))
+
+                                } catch (addError) {
+                                    // handle "add" error
+                                    console.error("Failed to add the Aurora Testnet Network: ", addError);
+                                }
+                            }
+                        })
                          
                     } catch (switchError) {
                         // This error code indicates that the chain has not been added to MetaMask.
@@ -91,7 +116,10 @@ export const StoreFunctions = (props) => {
             onStart = await Promise.resolve(result)
 
         } catch (error) {
-            startNotification('error', 'Transaction failed to deploy!', error.toString(), 14)
+            startNotification('error', 'Transaction failed to deploy!', error.message.toString(), 14)
+            console.error('onStart Error: ', error.message);
+            
+            // throw false;
             return false;
         }
 
@@ -150,7 +178,7 @@ export const StoreFunctions = (props) => {
         return (await signerOperations(contract.createCollection(name, symbol, metadata, { value: price })))
     }
     
-    fx.getUserCollection = async () => {
+    fx.getUserCollections = async () => {
         if (!account) fx.setup();
 
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
@@ -161,6 +189,7 @@ export const StoreFunctions = (props) => {
         return result;
     }
     
+    // returns number
     fx.totalCollections = async () => {
         if (!account) fx.setup();
 
@@ -223,7 +252,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(contractAddress, NFTAbi, provider);
         const result = await contract.balanceOf(userAddress)
-        console.log("balanceOf()", result);
+        console.log("balanceOf()", +result);
 
         return result;
     }
@@ -239,6 +268,8 @@ export const StoreFunctions = (props) => {
         return result;
     }
 
+    // used to assign or revoke the full approval rights to the given operator
+    // setApprovalForAll(address to, bool approved)
     fx.setApprovalForAll = async (bool, contractAddress) => {
         if (!account) fx.setup();
 
@@ -248,6 +279,8 @@ export const StoreFunctions = (props) => {
         return (await signerOperations(contract.setApprovalForAll(marketplaceAddress, bool)))
     }
 
+    // check that the given operator has operator rights on the given owner's tokens
+    // isApprovedForAll(address owner, address operator) public view returns (bool)
     fx.isApprovedForAll = async (userAddress, contractAddress) => {
         if (!account) fx.setup();
 
@@ -334,7 +367,8 @@ export const StoreFunctions = (props) => {
     fx.createAuctionBid = async (itemId, bidAmount) => {
         if (!account) fx.setup();
 
-        const etherPrice = utils.parseEther(bidAmount);
+        // console.log('bidd', bidAmount, etherPrice);
+        const etherPrice = utils.parseEther(bidAmount.toString());
         const signer = await signerFunction()
         const contract = new ethers.Contract(marketplaceAddress, MarketplaceAbi, signer)
 
