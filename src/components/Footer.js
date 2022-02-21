@@ -76,7 +76,7 @@ function Footer() {
                                         <li><Link to="/">Home</Link></li>
                                         <li><Link to="usercollection">My Collections</Link></li>
                                         <li><Link to="allcollection">All Collections</Link></li>
-                                        <li><Link to="explore">Explore</Link></li>
+                                        <li><Link to="allnfts">Explore</Link></li>
                                         <li><a href="https://adeai-walkthrough.netlify.app/" target="_blank">Walkthrough</a></li>
                                     </ul>
                                 </div>
