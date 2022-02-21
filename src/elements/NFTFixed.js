@@ -48,7 +48,7 @@ function NFTFixed({ currentMetaData, handleClick, isAuction, price, royalty, cre
                                 <h6 className="product-title product_title_intro">Caption: <span style={{color: "orange"}}>{currentMetaData?.caption}</span></h6>
                             </div>
                             <div className="product-title" href="#">
-                                <h6 className="product-title product_title_intro">Royalty: <span style={{color: "orange"}}>{utils.formatEther(royalty.toString())}</span></h6>
+                                <h6 className="product-title product_title_intro">Royalty: <span style={{color: "orange"}}>{utils.formatEther(royalty.toString())} ETH</span></h6>
                             </div>
                             <div className="product-title" href="#">
                                 <h6 className="product-title product_title_intro">

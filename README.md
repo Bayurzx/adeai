@@ -13,3 +13,9 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+## Deploy Steps
+- npx hardhat node
+- npx hardhat run scripts/deploy.js --network testnet_aurora
+- copy-item -path ".\artifact\*" -destination ".\src\artifact\" -recurse -Force
+

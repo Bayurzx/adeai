@@ -16,7 +16,7 @@ function BuyNFTModal({ itemId, price, isAuction, handleAuctionBid, bid, setBid, 
         e.preventDefault();
         if (isAuction) {
             await handleAuctionBid();
-            navigate("/"); // remeber to change to where you wanna go
+            navigate("/allnfts"); // remeber to change to where you wanna go
             window.location.reload()
         }
 

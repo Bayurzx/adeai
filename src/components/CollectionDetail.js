@@ -139,7 +139,7 @@ function CollectionDetail() {
         <>
             {loading && <Spinner />}
 
-            <Breadcrumb title="Explore your world of NFTs" description="Create something extraordinary!" />
+            <Breadcrumb title="Explore your world of NFTs" description="Create something extraordinary! Here you will find unlisted NFTs too" />
 
             {selectedNFT && <NFTModal {...selectedNFT} isApproved={isApproved} />}
 

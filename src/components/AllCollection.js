@@ -65,10 +65,12 @@ function AllCollection() {
     };
 
     const emptyFx = () => {
-        if (!loading && allCollections && allCollections.length < 1) {
+        console.log('allCollections', allCollections);
+        console.log('allCollections[0].metaDataHash', allCollections[0]?.metaDataHash);
+        if (!loading && allCollections?.length < 2 && !allCollections[0]?.metaDataHash) {
             return (
                 <div >
-                    <Emptys item="NFT" onClick={() => navigate(`/usercollection`)} />
+                    <Emptys item="Collection" onClick={() => navigate(`/newcollection`)} />
                 </div>
             )
         }

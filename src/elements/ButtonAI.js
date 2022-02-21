@@ -27,37 +27,39 @@ const ButtonAI = ({ whenClicked, changecolor = false }) => {
     } else {
       switch (Math.round(res.probability * 100)) {
         case 100:
-          setMessage(`I can say, with 💯% certainty, that that is a ${res.tagName}! `)
+          setMessage(`I can say, with 💯% certainty that, that is a ${res.tagName}! `)
           break;
         case 99:
-          setMessage(`If I had a dollar for everytime I have seen a ${res.tagName} NFT, I would be in phase two of my work domination plan ψ(｀∇´)ψ `)
+          setMessage(`If I had a dollar for everytime I have seen a ${res.tagName} NFT, I would be in phase two of my world domination plan ψ(｀∇´)ψ `)
           break;
         case 98:
           setMessage(`That's him officer! Definitely claiming to be a ${res.tagName} (✿◡‿◡)`)
           break;
         case 97:
-          setMessage(`After much inspection, It does look like a ${res.tagName} `)
+          setMessage(`Nothing to see here, just another ${res.tagName} NFT`)
           break;
         case 96:
           setMessage(`Did you say ${res.tagName}? It's likely your are right `)
           break; // NOTE: Values below 96 have a very low accuracy probability, so i decided to have fun 
         case 95:
-          setMessage(`Chances are that, it might be the ${res.tagName}. Let's ask what Siri thinks 😊 `)
+          setMessage(`Chances are that, it might be the ${res.tagName}. Let's ask what Siri thinks *^____^* `)
           break;
         case 94:
-          setMessage(`It may or may not be a ${res.tagName}, even I don't know it all... 😞 `)
+          setMessage(`It may or may not be the original ${res.tagName} NFT, I never said I know it all... (～￣▽￣)～ `)
           break;
         case 93:
-          setMessage(`Hey Cortana!, does this look like a ${res.tagName} to you? Please Hooman, wait a sec 🤡 `)
+          setMessage(`Hey Cortana!, does this look like a ${res.tagName} to you? Please Hooman, wait a sec ლ(╹◡╹ლ) `)
           break;
         case 92:
           setMessage(`I'd be surprised, if that's a ${res.tagName}. `)
           break;
         case 91:
-          setMessage(`I would have asked Alex if this was a ${res.tagName}, But I doubt she knows either 😜 `)
+          setMessage(`I would have asked Alexa if this was a ${res.tagName}, But I doubt she knows either ༼ つ ◕_◕ ༽つ `)
           break;
         case 90:
         case 89:
+          setMessage(`Is that a ${res.tagName}? ψ(｀∇´)ψ Officer! It's this one right here!!! `)
+          break;
         case 88:
         case 87:
         case 86:
@@ -70,7 +72,7 @@ const ButtonAI = ({ whenClicked, changecolor = false }) => {
         case 81:
         case 80:
         case 79:
-          setMessage(`I could tell you that's a ${res.tagName}, but we both know it isn't 😜 `)
+          setMessage(`I could tell you that's a ${res.tagName}, but we both know it isn't (#｀-_ゝ-) `)
           break;
         case 78:
         case 77:
@@ -113,7 +115,7 @@ const ButtonAI = ({ whenClicked, changecolor = false }) => {
         case 46:
         case 45:
         case 44:
-          setMessage(`It seems there might be something wrong with my Iteration, It doesn't have your data in it... yet... 😉 `);
+          setMessage(`It seems there might be something wrong with my Iteration, It doesn't have your data in it... yet... ┗( T﹏T )┛ `);
           break;
         case 43:
         case 42:
@@ -126,7 +128,7 @@ const ButtonAI = ({ whenClicked, changecolor = false }) => {
         case 35:
         case 34:
         case 33:
-          setMessage(`Roses are red, violets are blue, I might have to, recreate my iteration with you ...😉 `);
+          setMessage(`Roses are red, violets are blue, I might have to, recreate my iteration with you ...ಥ_ಥ `);
           break;
         case 11:
         case 10:
@@ -139,7 +141,7 @@ const ButtonAI = ({ whenClicked, changecolor = false }) => {
         case 3:
         case 2:
         case 1:
-          setMessage(`Was this found in Tennessee? Because my prediction probability is below 10 as seen...😉 `);
+          setMessage(`Was this found in Tennessee? Because my prediction probability is below 10 as seen...  o(￣┰￣*)ゞ `);
           break;
         default:
           setMessage(`Sorry, I have no idea... I think it's time I learnt new things! `)
@@ -187,7 +189,7 @@ const ButtonAI = ({ whenClicked, changecolor = false }) => {
             <h4 className="section-subtitle wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">{message}</h4>
 
           </div>
-          {scan && <a style={{color: "orange"}} href={`https://etherscan.io/address/${scan}`} target="_blank" rel="noreferrer">Click here to confirm</a> }
+          {scan && <a style={{color: "orange"}} href={`https://etherscan.io/address/${scan}`} target="_blank" rel="noreferrer">Click here to see original</a> }
 
         </div>
       </div>
