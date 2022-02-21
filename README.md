@@ -27,7 +27,7 @@ One of the issues plaguing the NFT ecosystem are counterfeiters or scam artists 
 
 
 How we built it
-![image](https://raw.githubusercontent.com/Bayurzx/adeai/master/screenshots/architecture.gif)
+![image](https://raw.githubusercontent.com/Bayurzx/adeai/master/screenshots/architecture.png)
 
 - The app was built with the help of the ReactJS Library and currently on top of the Aurora Testnet Network. DO NOT USE THE APP ON THE MAINNET.
 - Users create a collection to house their NFTs. After creating a collection, you can then create your NFTs and then list them to be seen on the Marketplace. You need to setApprovalFor all before you can mint your token.
