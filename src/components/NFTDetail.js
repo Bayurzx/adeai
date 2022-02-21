@@ -57,7 +57,7 @@ function NFTDetail() {
 
         console.log('image', image);
         const predictedData = await predictYourImage(image);
-        console.log("predictedData", predictedData);
+        // console.log("predictedData", predictedData);
 
         return predictedData
     };

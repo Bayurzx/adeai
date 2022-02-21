@@ -7,7 +7,7 @@ import { lastNum } from '../helpers/fx';
 
 function CollectionCard({ collectionData }) {
 
-    console.log("collectionCardData", collectionData);
+    // console.log("collectionCardData", collectionData);
     const { metaDataHash, creator, contractAddress } = collectionData;
 
     const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ function CollectionCard({ collectionData }) {
     useEffect(() => {
         dataFromMetadata()
 
-        console.log("data ", data);
+        // console.log("data ", data);
     }, [metaDataHash]);
 
     const dataFromMetadata = async () => {
@@ -27,7 +27,7 @@ function CollectionCard({ collectionData }) {
             })
             .catch((err) => console.log('getJSONfromHash Err: ', err))
     }
-    console.log('data', data);
+    // console.log('data', data);
 
     return (
         <>

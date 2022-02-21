@@ -27,7 +27,7 @@ function OwnedNFTs() {
         const res = await fetchMarketItems()
         const res2 = await fetchMyNFTs()
         setOwnedItem(res2)
-        console.log('res2', res2);
+        // console.log('res2', res2);
 
         const [fixedNFT, auctionNFT] = res;
 
@@ -54,7 +54,7 @@ function OwnedNFTs() {
     }
 
     function isOwner(value) {
-        console.log('value', value);
+        // console.log('value', value);
         return value.fixed.owner.toUpperCase() === account.toUpperCase();
     }
     

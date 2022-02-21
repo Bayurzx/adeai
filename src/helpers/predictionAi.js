@@ -20,7 +20,7 @@ export const predictYourImage = async (myImageLink) => {
         .then(result => {
             resultPrediction = result.predictions[0]
 
-            console.log("The result from url is: ", result);
+            // console.log("The result from url is: ", result);
         })
         .catch(err => {
             console.error("An error occurred:", err);
@@ -37,7 +37,7 @@ export const predictYourImageTwo = async (imageData) => {
         .then(result => {
             resultPredictionTwo = result.predictions[0]
 
-            console.log("The result from data is: ", result);
+            // console.log("The result from data is: ", result);
         })
         .catch(err => {
             console.error("An error occurred:", err);

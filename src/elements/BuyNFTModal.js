@@ -34,13 +34,13 @@ function BuyNFTModal({ itemId, price, isAuction, handleAuctionBid, bid, setBid, 
         let highestBids = +(utils.formatEther(auction.highestBid.toString()))
 
         
-        console.log('auction.highestBid', highestBids);
+        // console.log('auction.highestBid', highestBids);
         if (parseFloat(value) < highestBids) {
             value = highestBids;
             setIsError(true)
         } else setIsError(false)
         setBid(value)
-        console.log('bid', bid);
+        // console.log('bid', bid);
 
     }
 
@@ -64,7 +64,7 @@ function BuyNFTModal({ itemId, price, isAuction, handleAuctionBid, bid, setBid, 
 
                             <h3>{metaData.name}</h3>
                             <form onSubmit={handleBuying }>
-                                {console.log('isAuction', isAuction)}
+                                {/* {console.log('isAuction', isAuction)} */}
                                 {isAuction ? (
                                     <>
                                         <div className="d-flex justify-content-between">

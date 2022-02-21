@@ -48,7 +48,7 @@ function NewCollection() {
         const newMetaData = { ...metaData };
         newMetaData[field] = value;
         setMetaData(newMetaData);
-        console.log('newMetaData', newMetaData);
+        // console.log('newMetaData', newMetaData);
 
     }
 
@@ -90,10 +90,10 @@ function NewCollection() {
             duration: 8,
         });
 
-        console.log('ipfsdata', IpfsHash);
+        // console.log('ipfsdata', IpfsHash);
         const hash = await pinJSONToIPFS({ ...metaData, image: IpfsHash });
 
-        console.log("hash", hash);
+        // console.log("hash", hash);
         setLoading(false)
 
         notification['info']({
@@ -106,7 +106,7 @@ function NewCollection() {
 
         await createCollection(metaData.name, metaData.symbol, hash.data.IpfsHash, price.toString())
             .then((res) => {
-                console.log('createCollection', res);
+                // console.log('createCollection', res);
                 setLoading(false)
 
                 notification['success']({
@@ -127,7 +127,7 @@ function NewCollection() {
 
                 unPin(IpfsHash);
                 unPin(hash.data.IpfsHash);
-                console.log("error", error);
+                // console.log("error", error);
 
             })
 

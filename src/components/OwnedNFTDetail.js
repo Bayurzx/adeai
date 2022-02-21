@@ -36,7 +36,7 @@ function NFTDetail() {
 
     }, [selectedNFT])
 
-    console.log('selectedNFT', selectedNFT);
+    // console.log('selectedNFT', selectedNFT);
 
     const { metaData, tokenId, price, auction, royalty, creator, isAuction, nftContractAddress, itemId } = selectedNFT;
 
@@ -55,9 +55,9 @@ function NFTDetail() {
     const toPredictWithUrl = async (image) => {
         image = `https://ipfs.infura.io/ipfs/${image}`
 
-        console.log('image', image);
+        // console.log('image', image);
         const predictedData = await predictYourImage(image);
-        console.log("predictedData", predictedData);
+        // console.log("predictedData", predictedData);
 
         return predictedData
     };

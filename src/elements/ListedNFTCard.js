@@ -5,7 +5,7 @@ import { getJSONfromHash } from "../helpers";
 
 
 function ListedNFTCard(props) {
-    console.log('propsL', props);
+    // console.log('propsL', props);
 
     let navigate = useNavigate();
     const { tokenURI, unlistItem } = useContext(Store);
@@ -38,7 +38,7 @@ function ListedNFTCard(props) {
         setCurrentMetaData(nftDetails.metaData);
 
         // not another metadata
-        console.log('nftData', nftData);
+        // console.log('nftData', nftData);
 
     }
 

@@ -50,7 +50,7 @@ function ListedNFTs() {
     }
 
     function isSeller(value) {
-        console.log('value', value);
+        // console.log('value', value);
         return value.fixed.seller.toUpperCase() === account.toUpperCase();
     }
 

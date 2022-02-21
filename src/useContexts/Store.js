@@ -164,7 +164,7 @@ export const StoreFunctions = (props) => {
         const contract = new ethers.Contract(collectionAddress, CollectionAbi, provider);
 
         const result = (await contract.getPrice()).toString()
-        console.log("getPrice()", result);
+        // console.log("getPrice()", result);
         return (result);
     }
 
@@ -172,7 +172,7 @@ export const StoreFunctions = (props) => {
         if (!account) fx.setup();
 
         const signer = await signerFunction()
-        console.log('signer', signer);
+        // console.log('signer', signer);
         const contract = new ethers.Contract(collectionAddress, CollectionAbi, signer)
         
         return (await signerOperations(contract.createCollection(name, symbol, metadata, { value: price })))
@@ -184,7 +184,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(collectionAddress, CollectionAbi, provider);
         const result = await contract.getUserCollections()
-        console.log("getUserCollections()", result);
+        // console.log("getUserCollections()", result);
         
         return result;
     }
@@ -196,7 +196,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(collectionAddress, CollectionAbi, provider);
         const result = await contract.totalCollections()
-        console.log("totalCollections()", result);
+        // console.log("totalCollections()", result);
         
         return result;
     }
@@ -207,7 +207,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(collectionAddress, CollectionAbi, provider);
         const result = await contract.getCollectionsPaginated(startIndex, endIndex)
-        console.log("getMoreCollections()", result);
+        // console.log("getMoreCollections()", result);
         
         return result;
     }
@@ -230,7 +230,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(contractAddress, NFTAbi, provider);
         const result = await contract.tokenURI(tokenID)
-        console.log("tokenURI()", result);
+        // console.log("tokenURI()", result);
 
         return result;
     }
@@ -241,7 +241,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(contractAddress, NFTAbi, provider);
         const result = await contract.getTokenRoyalty(tokenID)
-        console.log("getTokenRoyalty()", result);
+        // console.log("getTokenRoyalty()", result);
 
         return result;
     }
@@ -252,7 +252,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(contractAddress, NFTAbi, provider);
         const result = await contract.balanceOf(userAddress)
-        console.log("balanceOf()", +result);
+        // console.log("balanceOf()", +result);
 
         return result;
     }
@@ -263,7 +263,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(contractAddress, NFTAbi, provider);
         const result = await contract.tokenOfOwnerByIndex(ownerAddress, index)
-        console.log("tokenOfOwnerByIndex()", result);
+        // console.log("tokenOfOwnerByIndex()", result);
 
         return result;
     }
@@ -287,7 +287,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(contractAddress, NFTAbi, provider);
         const result = await contract.isApprovedForAll(userAddress, marketplaceAddress)
-        console.log("isApprovedForAll()", result);
+        // console.log("isApprovedForAll()", result);
 
         return result;
     }
@@ -308,7 +308,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(marketplaceAddress, MarketplaceAbi, provider);
         const result = await contract.fetchMarketItems()
-        console.log("fetchMarketItems()", result);
+        // console.log("fetchMarketItems()", result);
 
         return result;
     }
@@ -319,7 +319,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(marketplaceAddress, MarketplaceAbi, provider);
         const result = await contract.fetchItemsCreated()
-        console.log("fetchItemsCreated()", result);
+        // console.log("fetchItemsCreated()", result);
 
         return result;
     }
@@ -330,7 +330,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(marketplaceAddress, MarketplaceAbi, provider);
         const result = await contract.fetchMyNFTs()
-        console.log("fetchMyNFTs()", result);
+        // console.log("fetchMyNFTs()", result);
 
         return result;
     }
@@ -391,7 +391,7 @@ export const StoreFunctions = (props) => {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet.aurora.dev");
         const contract = new ethers.Contract(marketplaceAddress, MarketplaceAbi, provider);
         const result = await contract.fetchUserBids()
-        console.log("fetchUserBids()", result);
+        // console.log("fetchUserBids()", result);
 
         return result;
     }

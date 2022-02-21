@@ -53,14 +53,14 @@ function CollectionDetail() {
             });
 
             const setAppr = await setApprovalForAll(true, contractAddress)
-            console.log("setAppr", setAppr);
+            // console.log("setAppr", setAppr);
 
             return setAppr;
             
 
         } else {
             // Do nothing!
-            console.log('It was not approved.');
+            // console.log('It was not approved.');
             notification['info']({
                 message: "Approval!",
                 description: "Approval has been denied!",
@@ -75,8 +75,8 @@ function CollectionDetail() {
     const fetchNFTs = async () => {
         const res = +(await balanceOf(ownerAddress, contractAddress))
         setNftCount(res)
-        console.log('nftCount', nftCount);
-        console.log('res', res);
+        // console.log('nftCount', nftCount);
+        // console.log('res', res);
 
     }
 
@@ -84,7 +84,7 @@ function CollectionDetail() {
         if (metaDataHash) {
             const res = await getJSONfromHash(metaDataHash);
             setmetaData(res.data);
-            console.log('metaData' ,res.data);
+            // console.log('metaData' ,res.data);
         }
     };
 
@@ -102,11 +102,11 @@ function CollectionDetail() {
 
             nftData.tokenURI = await tokenURI(nftData.tokenId, contractAddress);
             nftData.metaData = (await getJSONfromHash(nftData.tokenURI)).data;
-            console.log('nftData.metaData', nftData.metaData);
+            // console.log('nftData.metaData', nftData.metaData);
 
             nfts.push(nftData);
         }
-        console.log("mapped NFTs", nfts.map(e => e.toString()));
+        // console.log("mapped NFTs", nfts.map(e => e.toString()));
         setNftDetails(nfts);
     }
 

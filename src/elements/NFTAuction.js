@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 
 function NFTAuction({ currentMetaData, isAuction, price, creator, royalty, auction, bid, handleAuctionBid, handleClick,  }) {
-    console.log('currentMetaData2', currentMetaData);
+    // console.log('currentMetaData2', currentMetaData);
     let endTime = new Date(+auction.timeEnding )
-    console.log('endTime', +auction.timeEnding );
+    // console.log('endTime', +auction.timeEnding );
 
     const calculateTimeLeft = (endTime) => {
         let currDate = Date.now();

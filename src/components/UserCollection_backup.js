@@ -23,15 +23,15 @@ function UserCollection() {
 
     useEffect(() => {
 
-        console.log('hello');
+        // console.log('hello');
 
         getUserCollections()
             .then((res) => {
                 setUserCollections(res)
-                console.log('userCollections', userCollections);
+                // console.log('userCollections', userCollections);
             })
             .catch((err) => {
-                console.log('getUserCollections Err: ', err);
+                // console.log('getUserCollections Err: ', err);
 
                 notification['error']({
                     message: "Error fetching User Collection!",

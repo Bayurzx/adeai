@@ -40,14 +40,14 @@ function UserCollection() {
         setNumCollection(Math.min(2, res));
 
         const moreCollections = (await getMoreCollections(0, Math.min(5, res)))
-        console.log("moreCollections", moreCollections);
+        // console.log("moreCollections", moreCollections);
         setAllCollections(moreCollections[0]);
         setLoading(false);
     }
 
     useEffect(() => {
 
-        console.log('hello');
+        // console.log('hello');
         getAllCollections();
 
     }, []);

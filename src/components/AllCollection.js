@@ -39,14 +39,13 @@ function AllCollection() {
         setNumCollection(Math.min(2, res));
 
         const moreCollections = (await getMoreCollections(0, Math.min(5, res)))
-        console.log("moreCollections", moreCollections);
+        // console.log("moreCollections", moreCollections);
         setAllCollections(moreCollections[0]);
         setLoading(false);
     }
 
     useEffect(() => {
 
-        console.log('hello');
         getAllCollections();
 
     }, []);
@@ -65,8 +64,8 @@ function AllCollection() {
     };
 
     const emptyFx = () => {
-        console.log('allCollections', allCollections);
-        console.log('allCollections[0].metaDataHash', allCollections[0]?.metaDataHash);
+        // console.log('allCollections', allCollections);
+        // console.log('allCollections[0].metaDataHash', allCollections[0]?.metaDataHash);
         if (!loading && allCollections?.length < 2 && !allCollections[0]?.metaDataHash) {
             return (
                 <div >

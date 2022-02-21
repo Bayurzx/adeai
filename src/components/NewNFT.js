@@ -40,7 +40,7 @@ function NewNFT() {
 
     const handleOnChange = (dataType) => {
         setDataType(!dataType);
-        console.log("is 3D? ", dataType);
+        // console.log("is 3D? ", dataType);
     }
 
     const handleSubmit = (e) => {
@@ -75,10 +75,10 @@ function NewNFT() {
             duration: 8,
         });
 
-        console.log('ipfsdata', IpfsHash);
+        // console.log('ipfsdata', IpfsHash);
         const hash = await pinJSONToIPFS({ ...metaData, image: IpfsHash });
 
-        console.log("hash", hash);
+        // console.log("hash", hash);
         setLoading(false)
 
         notification['info']({
@@ -92,7 +92,7 @@ function NewNFT() {
         await mint(hash.data.IpfsHash, metaData.royalty, contractAddress)
             .then((res) => {
                 setLoading(false)
-                console.log('mint', res);
+                // console.log('mint', res);
                 if (!res) throw new Error("Something went wrong")
 
                 notification['success']({

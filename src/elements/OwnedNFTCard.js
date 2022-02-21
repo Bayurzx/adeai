@@ -11,7 +11,7 @@ import { lastNum } from '../helpers/fx';
 
 function OwnedNFTCard(props) {
 
-    console.log('props', props);
+    // console.log('props', props);
 
     const {
         metaData,
@@ -42,12 +42,12 @@ function OwnedNFTCard(props) {
         const nftDetails = {
             ...props,
         }
-        console.log('+tokenId', +tokenId);
+        // console.log('+tokenId', +tokenId);
         nftDetails.tokenURI = await tokenURI(+tokenId, nftContractAddress)
         nftDetails.metaData = (await getJSONfromHash(nftDetails.tokenURI)).data;
-        console.log('nftDetails.metaData', nftDetails.metaData);
+        // console.log('nftDetails.metaData', nftDetails.metaData);
         setNftData(nftDetails);
-        console.log('nftDetails', nftDetails);
+        // console.log('nftDetails', nftDetails);
         setCurrentMetaData(nftDetails.metaData);
         // not another metadata
 

@@ -10,7 +10,7 @@ import BuyNFTModal from './BuyNFTModal';
 
 function UnsoldNFTCard(props) {
 
-    console.log('props', props);
+    // console.log('props', props);
 
     const {
         metaData,
@@ -46,9 +46,9 @@ function UnsoldNFTCard(props) {
         }
         nftDetails.tokenURI = await tokenURI(+tokenId, nftContractAddress)
         nftDetails.metaData = (await getJSONfromHash(nftDetails.tokenURI)).data;
-        console.log('nftDetails.metaData', nftDetails.metaData);
+        // console.log('nftDetails.metaData', nftDetails.metaData);
         setNftData(nftDetails);
-        console.log('nftDetails', nftDetails);
+        // console.log('nftDetails', nftDetails);
         setCurrentMetaData(nftDetails.metaData);
         // not another metadata
 
@@ -65,7 +65,7 @@ function UnsoldNFTCard(props) {
     }
 
     const handleAuctionBid = async () => {
-        console.log('bid & itemId:', bid, +itemId);
+        // console.log('bid & itemId:', bid, +itemId);
         await createAuctionBid(+itemId, bid)
     }
 
